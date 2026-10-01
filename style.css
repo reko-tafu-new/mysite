@@ -1,5 +1,5 @@
 /* =========================
-   全体
+   基本設定
 ========================= */
 
 * {
@@ -14,19 +14,18 @@ body {
     margin: 0;
 
     font-family:
-        "Hiragino Kaku Gothic ProN",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
         "Yu Gothic",
         Meiryo,
         sans-serif;
 
-    background: #fffaf0;
     color: #333;
 
-    line-height: 1.8;
-}
+    background: #ffffff;
 
-img {
-    max-width: 100%;
+    line-height: 1.8;
 }
 
 
@@ -35,55 +34,113 @@ img {
 ========================= */
 
 header {
-    background: #ffffff;
+    border-bottom: 1px solid #ddd;
 
-    border-bottom: 4px solid #222;
+    background: #ffffff;
 }
 
 .header-inner {
-    max-width: 1100px;
+    max-width: 1000px;
 
     margin: 0 auto;
 
     padding: 20px;
 
     display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    gap: 30px;
+    justify-content: space-between;
+
+    align-items: center;
 }
 
-.logo {
+.site-name {
     color: #222;
 
-    font-size: 25px;
-    font-weight: 900;
-
     text-decoration: none;
+
+    font-size: 24px;
+
+    font-weight: bold;
 }
 
 nav {
     display: flex;
 
-    gap: 8px;
+    gap: 25px;
 }
 
 nav a {
-    padding: 8px 14px;
-
-    color: #333;
+    color: #555;
 
     text-decoration: none;
 
     font-size: 14px;
-    font-weight: bold;
-
-    border-radius: 20px;
 }
 
 nav a:hover {
-    background: #ffe04b;
+    color: #e85d75;
+}
+
+
+/* =========================
+   検索
+========================= */
+
+.search-area {
+    max-width: 1000px;
+
+    margin: 30px auto;
+
+    padding: 0 20px;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 5px;
+}
+
+.search-area input {
+    width: 230px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 4px;
+
+    font-size: 14px;
+}
+
+.search-area button {
+    padding: 9px 18px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    background: #333;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.search-area button:hover {
+    background: #e85d75;
+}
+
+
+/* =========================
+   メイン
+========================= */
+
+main {
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding: 0 20px;
 }
 
 
@@ -92,201 +149,89 @@ nav a:hover {
 ========================= */
 
 .intro {
-    max-width: 1100px;
+    padding: 60px 20px 40px;
 
-    margin: 0 auto;
-
-    padding: 80px 20px;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 60px;
-
-    align-items: center;
-}
-
-.intro-text {
-    padding: 20px;
-}
-
-.label {
-    display: inline-block;
-
-    padding: 5px 14px;
-
-    background: #ff6b4a;
-
-    color: white;
-
-    border-radius: 20px;
-
-    font-size: 13px;
-    font-weight: bold;
+    text-align: center;
 }
 
 .intro h1 {
-    margin: 20px 0;
+    margin: 0 0 20px;
 
-    font-size: 48px;
+    font-size: 36px;
 
-    line-height: 1.35;
-
-    font-weight: 900;
+    font-weight: 800;
 
     color: #222;
 }
 
 .intro p {
+    margin: 0 auto 20px;
+
     color: #666;
 
-    font-size: 16px;
+    font-size: 15px;
 }
 
-.main-button {
-    display: inline-block;
+.intro a {
+    color: #e85d75;
 
-    margin-top: 15px;
-
-    padding: 12px 25px;
-
-    background: #222;
-
-    color: white;
-
-    border-radius: 30px;
+    font-weight: bold;
 
     text-decoration: none;
-
-    font-weight: bold;
 }
 
-.main-button:hover {
-    background: #ff6b4a;
-}
-
-.intro-image {
-    position: relative;
-
-    transform: rotate(2deg);
-}
-
-.intro-image img {
-    width: 100%;
-
-    height: 400px;
-
-    object-fit: cover;
-
-    border: 10px solid white;
-
-    box-shadow: 8px 8px 0 #5ac8a8;
-}
-
-.image-caption {
-    position: absolute;
-
-    right: 10px;
-    bottom: -20px;
-
-    padding: 8px 15px;
-
-    background: #ffe04b;
-
-    color: #222;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    transform: rotate(-4deg);
+.intro a:hover {
+    text-decoration: underline;
 }
 
 
 /* =========================
-   写真エリア
+   メイン画像
 ========================= */
 
-.photo-area {
-    max-width: 1100px;
-
-    margin: 0 auto;
-
-    padding: 20px;
-
+.main-images {
     display: grid;
 
-    grid-template-columns: 1fr 1.3fr 1fr;
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
 
-    gap: 20px;
+    gap: 15px;
 
-    align-items: center;
+    margin: 30px 0 80px;
 }
 
-.photo {
+.image-box {
+    padding: 8px;
+
+    border-radius: 10px;
+
     overflow: hidden;
-
-    border: 8px solid white;
-
-    box-shadow: 5px 5px 0 #222;
 }
 
-.photo img {
+.image-box img {
+    display: block;
+
     width: 100%;
 
     height: 230px;
 
     object-fit: cover;
 
-    display: block;
+    border-radius: 6px;
 }
 
-.photo-1 {
-    background: #5ac8a8;
-
-    transform: rotate(-3deg);
+.image-yellow {
+    background: #ffe680;
 }
 
-.photo-2 {
-    background: #ffe04b;
-
-    transform: rotate(2deg);
+.image-blue {
+    background: #9ddcff;
 }
 
-.photo-3 {
-    background: #6aa9ff;
-
-    transform: rotate(-2deg);
-}
-
-
-/* =========================
-   共通見出し
-========================= */
-
-.section-title {
-    margin-bottom: 40px;
-}
-
-.section-title span {
-    color: #ff6b4a;
-
-    font-size: 13px;
-
-    font-weight: 900;
-
-    letter-spacing: 0.15em;
-}
-
-.section-title h2 {
-    margin: 0;
-
-    font-size: 38px;
-
-    font-weight: 900;
-
-    color: #222;
+.image-pink {
+    background: #ffb5c5;
 }
 
 
@@ -295,111 +240,81 @@ nav a:hover {
 ========================= */
 
 .articles {
-    max-width: 1100px;
-
-    margin: 0 auto;
-
-    padding: 100px 20px;
+    margin-bottom: 70px;
 }
 
-.article-list {
-    display: grid;
+.articles h2 {
+    margin-bottom: 30px;
 
-    grid-template-columns: repeat(3, 1fr);
+    font-size: 28px;
+
+    border-bottom: 3px solid #333;
+
+    padding-bottom: 10px;
+}
+
+
+/* 記事 */
+
+.article {
+    display: flex;
 
     gap: 25px;
-}
 
-.article-card {
-    background: white;
+    padding: 25px 0;
 
-    border: 3px solid #222;
-
-    box-shadow: 7px 7px 0 #222;
-
-    transition: 0.2s;
-}
-
-.article-card:hover {
-    transform: translateY(-7px);
+    border-bottom: 1px solid #ddd;
 }
 
 .article-image {
-    padding: 10px;
+    width: 220px;
+
+    min-width: 220px;
+
+    padding: 6px;
+
+    border-radius: 8px;
 }
 
 .article-image img {
     width: 100%;
 
-    height: 220px;
+    height: 150px;
 
     object-fit: cover;
 
     display: block;
+
+    border-radius: 5px;
 }
 
-.green {
-    background: #5ac8a8;
+.article:nth-child(2) .article-image {
+    background: #ffe680;
 }
 
-.yellow {
-    background: #ffe04b;
+.article:nth-child(3) .article-image {
+    background: #9ddcff;
 }
 
-.blue {
-    background: #6aa9ff;
+.article:nth-child(4) .article-image {
+    background: #ffb5c5;
 }
 
-.article-info {
-    padding: 22px;
+.article-text h3 {
+    margin: 8px 0;
+
+    font-size: 21px;
 }
 
-.category {
-    display: inline-block;
-
-    padding: 3px 10px;
-
-    border-radius: 15px;
-
-    font-size: 12px;
-
-    font-weight: bold;
-}
-
-.fossil {
-    background: #ffd0c5;
-    color: #c43f25;
-}
-
-.plant {
-    background: #c9f1d9;
-    color: #237b4b;
-}
-
-.shell {
-    background: #d4e5ff;
-    color: #3568a8;
-}
-
-.article-info h3 {
-    margin: 12px 0 10px;
-
-    font-size: 22px;
-
-    color: #222;
-}
-
-.article-info p {
-    margin: 0;
+.article-text p {
+    margin: 5px 0;
 
     color: #666;
 
     font-size: 14px;
 }
 
-.article-meta {
-    margin-top: 20px;
-
+.article-text small {
     color: #999;
 
     font-size: 12px;
@@ -407,69 +322,105 @@ nav a:hover {
 
 
 /* =========================
-   カテゴリー
+   カテゴリ
 ========================= */
 
-.categories {
-    max-width: 1100px;
+aside {
+    margin-bottom: 70px;
 
-    margin: 0 auto;
-
-    padding: 50px 20px 100px;
-}
-
-.category-list {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
 
-    gap: 20px;
+    gap: 40px;
 }
 
-.category-box {
-    min-height: 160px;
-
+aside section {
     padding: 25px;
 
-    color: #222;
+    border-radius: 10px;
+}
+
+aside section:first-child {
+    background: #fff1a8;
+}
+
+aside section:last-child {
+    background: #c7edff;
+}
+
+aside h2 {
+    margin-top: 0;
+
+    font-size: 21px;
+}
+
+aside ul {
+    margin: 0;
+
+    padding-left: 20px;
+}
+
+aside li {
+    margin-bottom: 8px;
+}
+
+aside a {
+    color: #333;
 
     text-decoration: none;
+}
 
-    border: 3px solid #222;
+aside a:hover {
+    color: #e85d75;
+}
 
+
+/* =========================
+   タグ
+========================= */
+
+.tags {
     display: flex;
 
-    flex-direction: column;
+    flex-wrap: wrap;
 
-    justify-content: center;
-
-    gap: 5px;
-
-    transition: 0.2s;
+    gap: 8px;
 }
 
-.category-box:hover {
-    transform: translateY(-5px);
+.tags a {
+    padding: 5px 12px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    font-size: 13px;
 }
 
-.category-box strong {
-    font-size: 24px;
+
+/* =========================
+   サイトについて
+========================= */
+
+.about-detail {
+    padding: 45px;
+
+    margin-bottom: 50px;
+
+    background: #f4eaff;
+
+    border-radius: 12px;
 }
 
-.category-box small {
-    color: #555;
+.about-detail h2 {
+    margin-top: 0;
+
+    font-size: 25px;
 }
 
-.fossil-box {
-    background: #ffcfb9;
-}
-
-.research-box {
-    background: #bfe9ff;
-}
-
-.diary-box {
-    background: #fff09a;
+.about-detail p {
+    color: #666;
 }
 
 
@@ -478,43 +429,56 @@ nav a:hover {
 ========================= */
 
 .notice {
-    max-width: 1100px;
+    padding: 30px;
 
-    margin: 0 auto 100px;
+    margin-bottom: 80px;
 
-    padding: 35px;
+    background: #ffe1e8;
 
-    background: #222;
+    border-left: 8px solid #e85d75;
 
-    color: white;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 30px;
+    border-radius: 6px;
 }
 
-.notice span {
-    color: #ffe04b;
+.notice h2 {
+    margin-top: 0;
+
+    font-size: 22px;
+}
+
+
+/* =========================
+   カテゴリ色
+========================= */
+
+.article-category {
+    display: inline-block;
+
+    padding: 3px 10px;
+
+    border-radius: 20px;
 
     font-size: 12px;
 
     font-weight: bold;
 }
 
-.notice h2 {
-    margin: 5px 0 0;
+.fossil {
+    background: #ffd4a8;
 
-    font-size: 28px;
+    color: #9b5619;
 }
 
-.notice p {
-    margin: 0;
+.plant {
+    background: #c9efcf;
 
-    color: #ddd;
+    color: #27733b;
+}
+
+.shell {
+    background: #d8d9ff;
+
+    color: #5154a5;
 }
 
 
@@ -523,26 +487,28 @@ nav a:hover {
 ========================= */
 
 footer {
-    padding: 50px 20px;
+    padding: 40px 20px;
 
-    background: #5ac8a8;
-
-    color: #222;
+    border-top: 1px solid #ddd;
 
     text-align: center;
 }
 
-.footer-logo {
-    font-size: 25px;
+.footer-name {
+    color: #222;
 
-    font-weight: 900;
+    text-decoration: none;
+
+    font-weight: bold;
+
+    font-size: 20px;
 }
 
 footer p {
-    margin: 5px 0 15px;
-}
+    margin: 5px 0 0;
 
-footer small {
+    color: #999;
+
     font-size: 12px;
 }
 
@@ -561,48 +527,50 @@ footer small {
         margin-top: 15px;
 
         flex-wrap: wrap;
+
+        gap: 10px 18px;
     }
 
-    .intro {
-        grid-template-columns: 1fr;
+    .search-area {
+        justify-content: stretch;
+    }
 
-        padding: 50px 20px;
-
-        gap: 40px;
+    .search-area input {
+        width: 100%;
     }
 
     .intro h1 {
-        font-size: 38px;
+        font-size: 28px;
     }
 
-    .intro-image img {
-        height: 300px;
-    }
-
-    .photo-area {
+    .main-images {
         grid-template-columns: 1fr;
     }
 
-    .photo img {
+    .image-box img {
         height: 220px;
     }
 
-    .article-list {
-        grid-template-columns: 1fr;
-    }
-
-    .category-list {
-        grid-template-columns: 1fr;
-    }
-
-    .notice {
-        margin: 0 20px 60px;
-
+    .article {
         display: block;
     }
 
-    .notice p {
-        margin-top: 20px;
+    .article-image {
+        width: 100%;
+
+        min-width: 0;
+    }
+
+    .article-image img {
+        height: 220px;
+    }
+
+    aside {
+        grid-template-columns: 1fr;
+    }
+
+    .about-detail {
+        padding: 25px;
     }
 
 }
