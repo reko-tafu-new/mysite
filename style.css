@@ -1,41 +1,70 @@
-```css
+/* 全体 */
+
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    font-family: Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-    background: #f5f5f5;
-    color: #333;
+    font-family:
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        Meiryo,
+        sans-serif;
+
+    background: #f3f0e8;
+    color: #30352f;
+    line-height: 1.8;
 }
 
 
 /* ヘッダー */
 
 header {
-    background: white;
-    border-bottom: 1px solid #ddd;
+    background: #f3f0e8;
+    border-bottom: 1px solid #d7d2c6;
 }
 
 .header-inner {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 24px 30px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 24px;
+.site-title {
+    text-decoration: none;
+    color: #30352f;
+
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+}
+
+.site-title span {
+    font-weight: normal;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
 }
 
 nav a {
-    margin-left: 20px;
     text-decoration: none;
-    color: #333;
+    color: #555b52;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #8b5e3c;
 }
 
 
@@ -43,117 +72,220 @@ nav a {
 
 main {
     max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: 0 auto;
+}
+
+
+/* ヒーロー */
+
+.hero {
+    min-height: 520px;
+    padding: 70px 30px;
 
     display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+
+    align-items: center;
+}
+
+.hero-label {
+    color: #8b5e3c;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    margin: 0 0 25px;
+
+    font-family: Georgia, serif;
+    font-size: 64px;
+    line-height: 1.2;
+    font-weight: normal;
+
+    color: #30352f;
+}
+
+.hero-text > p:last-child {
+    color: #666b63;
+}
+
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 400px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 2px;
 }
 
 
 /* 記事 */
 
-article {
-    background: white;
-    padding: 40px;
+.articles {
+    padding: 80px 30px;
 }
 
-.article-header {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+.section-heading {
+    margin-bottom: 40px;
+}
+
+.section-heading p,
+.section-label {
+    margin: 0;
+
+    color: #8b5e3c;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+}
+
+.section-heading h2,
+.about h2 {
+    margin: 5px 0 0;
+
+    font-family: Georgia, serif;
+    font-size: 38px;
+    font-weight: normal;
+}
+
+
+/* 記事カード */
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: #fff;
+
+    overflow: hidden;
+
+    border: 1px solid #e0ddd5;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.card-image {
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.04);
+}
+
+.card-content {
+    padding: 25px;
 }
 
 .category {
-    color: #777;
+    margin: 0 0 8px;
+
+    color: #8b5e3c;
+
+    font-size: 12px;
+    letter-spacing: 0.1em;
+}
+
+.card h3 {
+    margin: 0 0 12px;
+
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.card p:not(.category) {
+    margin: 0 0 20px;
+
+    color: #666;
     font-size: 14px;
 }
 
-h2 {
-    margin: 10px 0;
-    font-size: 32px;
+.read-more {
+    color: #30352f;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    letter-spacing: 0.08em;
 }
 
-.date {
-    color: #888;
-    font-size: 14px;
-}
-
-.article-body {
-    line-height: 2;
-}
-
-
-/* 記事内の見出し */
-
-.article-body h3 {
-    margin-top: 40px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #333;
+.read-more:hover {
+    color: #8b5e3c;
 }
 
 
-/* 記事内の画像 */
+/* ABOUT */
 
-.article-body img {
-    width: 500px;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px 0;
+.about {
+    margin-top: 30px;
+    padding: 80px 30px;
+
+    background: #e5e0d4;
 }
 
-
-/* サイドバー */
-
-aside section {
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
+.about-inner {
+    max-width: 700px;
 }
 
-aside h3 {
-    margin-top: 0;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+.about h2 {
+    margin-bottom: 25px;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
-button {
-    margin-top: 10px;
-    padding: 8px 20px;
-    border: none;
-    background: #333;
-    color: white;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 10px;
-}
-
-a {
-    color: inherit;
+.about p:not(.section-label) {
+    color: #5f635d;
 }
 
 
 /* フッター */
 
 footer {
-    margin-top: 60px;
-    padding: 30px;
+    padding: 50px 20px;
+
     text-align: center;
-    background: #333;
+
+    background: #30352f;
     color: white;
+}
+
+footer p {
+    margin: 0 0 5px;
+
+    font-family: Georgia, serif;
+    font-size: 20px;
+}
+
+footer small {
+    color: #c8cbc5;
 }
 
 
@@ -163,27 +295,40 @@ footer {
 
     .header-inner {
         display: block;
+        padding: 20px;
     }
 
     nav {
         margin-top: 15px;
+        gap: 20px;
     }
 
-    nav a {
-        margin-left: 0;
-        margin-right: 15px;
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding: 50px 20px;
+
+        gap: 30px;
     }
 
-    main {
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero-image img {
+        height: 300px;
+    }
+
+    .articles {
+        padding: 60px 20px;
+    }
+
+    .article-grid {
         grid-template-columns: 1fr;
     }
 
-    article {
-        padding: 25px;
+    .about {
+        padding: 60px 20px;
     }
 
-    h2 {
-        font-size: 26px;
-    }
 }
-```
