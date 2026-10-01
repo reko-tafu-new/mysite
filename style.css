@@ -388,3 +388,25 @@ h2 {
     font-weight: 700;
     text-underline-offset: 4px;
 }
+
+
+/* =========================
+   日付
+========================= */
+.post-date {
+    flex-shrink: 0;
+    margin-left: auto;
+    font-size: 14px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.article-date {
+    display: block;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+@media (max-width: 700px) {
+    .post-date { margin-left: 0; }
+}
