@@ -1,122 +1,202 @@
-```html
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>気まぐれ白亜紀</title>
+
+    <meta name="description" content="白亜紀の生き物や研究について、気ままに紹介するサイトです。">
+
     <meta name="google-site-verification" content="Ldopm_2A64YRhq-wxG6yr-6cmKxI-bX-UetABGQNLeU" />
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- ヘッダー -->
     <header>
         <div class="header-inner">
-            <h1>気まぐれ白亜紀</h1>
+
+            <a href="#" class="site-title">
+                <span>気まぐれ</span>白亜紀
+            </a>
 
             <nav>
-                <a href="#">ホーム</a>
-                <a href="#">記事一覧</a>
-                <a href="#">プロフィール</a>
+                <a href="#home">ホーム</a>
+                <a href="#articles">記事</a>
+                <a href="#about">このサイトについて</a>
             </nav>
+
         </div>
     </header>
 
 
+    <!-- メイン -->
     <main>
 
-        <article>
+        <!-- ヒーロー -->
+        <section class="hero" id="home">
 
-            <div class="article-header">
-                <p class="category">カテゴリー</p>
+            <div class="hero-text">
+                <p class="hero-label">CRETACEOUS LIFE</p>
 
-                <h2>ここに記事のタイトルが入ります</h2>
+                <h1>
+                    気まぐれに、
+                    <br>
+                    白亜紀。
+                </h1>
 
-                <p class="date">2026年9月30日</p>
+                <p>
+                    アンモナイトや古生物、研究のことなど。
+                    <br>
+                    白亜紀の世界を気ままに覗いてみるサイトです。
+                </p>
             </div>
 
-
-            <div class="article-body">
-
-                <p>
-                    ここに記事本文を書きます。
-                    これは自分で作ったWebサイトの記事ページです。
-                </p>
-
-                <p>
-                    HTMLで文章を書いて、CSSで見た目を整えています。
-                    今はまだ静的なページですが、あとでPythonを使って
-                    動的なWebサイトにしていきます。
-                </p>
-
-
-                <h3>プゾシア</h3>
-
+            <div class="hero-image">
                 <img src="images/プゾシア.jpg" alt="プゾシア">
+            </div>
+
+        </section>
 
 
-                <h3>樹木</h3>
+        <!-- 記事 -->
+        <section class="articles" id="articles">
 
-                <img src="images/樹木.jpg" alt="樹木">
+            <div class="section-heading">
+                <p>ARTICLES</p>
+                <h2>気まぐれ記事</h2>
+            </div>
 
 
-                <h3>貝</h3>
+            <div class="article-grid">
 
-                <img src="images/貝.jpg" alt="貝">
+                <!-- プゾシア -->
+                <article class="card">
+
+                    <div class="card-image">
+                        <img src="images/プゾシア.jpg" alt="プゾシア">
+                    </div>
+
+                    <div class="card-content">
+
+                        <p class="category">古生物</p>
+
+                        <h3>プゾシア</h3>
+
+                        <p>
+                            白亜紀を生きたアンモナイト、
+                            プゾシアについて。
+                        </p>
+
+                        <a href="#" class="read-more">
+                            READ MORE →
+                        </a>
+
+                    </div>
+
+                </article>
 
 
-                <h3>もう一つの見出し</h3>
+                <!-- 樹木 -->
+                <article class="card">
+
+                    <div class="card-image">
+                        <img src="images/樹木.jpg" alt="白亜紀の樹木">
+                    </div>
+
+                    <div class="card-content">
+
+                        <p class="category">白亜紀</p>
+
+                        <h3>白亜紀の樹木</h3>
+
+                        <p>
+                            白亜紀の植物や、
+                            当時の環境について。
+                        </p>
+
+                        <a href="#" class="read-more">
+                            READ MORE →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 貝 -->
+                <article class="card">
+
+                    <div class="card-image">
+                        <img src="images/貝.jpg" alt="白亜紀の貝">
+                    </div>
+
+                    <div class="card-content">
+
+                        <p class="category">古生物</p>
+
+                        <h3>白亜紀の貝</h3>
+
+                        <p>
+                            白亜紀の海に暮らしていた
+                            生き物たち。
+                        </p>
+
+                        <a href="#" class="read-more">
+                            READ MORE →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- サイトについて -->
+        <section class="about" id="about">
+
+            <div class="about-inner">
+
+                <p class="section-label">ABOUT</p>
+
+                <h2>このサイトについて</h2>
 
                 <p>
-                    画像やリンク、表なども後から追加できます。
+                    「気まぐれ白亜紀」は、
+                    白亜紀の生き物や化石、研究などについて
+                    気ままに紹介していくサイトです。
+                </p>
+
+                <p>
+                    古生物のことから研究の話まで、
+                    興味を持ったことを少しずつ記録していきます。
                 </p>
 
             </div>
 
-        </article>
-
-
-        <aside>
-
-            <section>
-                <h3>記事を検索</h3>
-
-                <input type="text" placeholder="キーワードを入力">
-                <button>検索</button>
-            </section>
-
-            <section>
-                <h3>カテゴリー</h3>
-
-                <ul>
-                    <li><a href="#">Python</a></li>
-                    <li><a href="#">研究</a></li>
-                    <li><a href="#">日記</a></li>
-                </ul>
-            </section>
-
-            <section>
-                <h3>最近の記事</h3>
-
-                <ul>
-                    <li><a href="#">最初の記事</a></li>
-                    <li><a href="#">Pythonを勉強した</a></li>
-                    <li><a href="#">サイトを作ってみた</a></li>
-                </ul>
-            </section>
-
-        </aside>
+        </section>
 
     </main>
 
 
+    <!-- フッター -->
     <footer>
-        <p>&copy; 2026 気まぐれ白亜紀</p>
+
+        <p>気まぐれ白亜紀</p>
+
+        <small>
+            © 2026 気まぐれ白亜紀
+        </small>
+
     </footer>
 
 </body>
 
 </html>
-```
