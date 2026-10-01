@@ -40,25 +40,21 @@
             <a class="more" href="#">どんなサイト？を読む →</a>
         </section>
 
-        <!-- 自動スライド写真 -->
-        <section class="slider" aria-label="写真ギャラリー">
-            <div class="slider-track">
-                <!-- 1セット目 -->
-                <img src="images/プゾシア.jpg" alt="プゾシア">
-                <img src="images/樹木.jpg" alt="白亜紀の樹木">
-                <img src="images/貝.jpg" alt="白亜紀の貝">
-                <img src="images/プゾシア.jpg" alt="" aria-hidden="true">
-                <img src="images/樹木.jpg" alt="" aria-hidden="true">
-                <img src="images/貝.jpg" alt="" aria-hidden="true">
-                <!-- 2セット目(ループ用の複製。1セット目と同じ並びにする) -->
-                <img src="images/プゾシア.jpg" alt="" aria-hidden="true">
-                <img src="images/樹木.jpg" alt="" aria-hidden="true">
-                <img src="images/貝.jpg" alt="" aria-hidden="true">
-                <img src="images/プゾシア.jpg" alt="" aria-hidden="true">
-                <img src="images/樹木.jpg" alt="" aria-hidden="true">
-                <img src="images/貝.jpg" alt="" aria-hidden="true">
-            </div>
-        </section>
+    </div>
+</main>
+
+<!-- 自動スライド写真(画像を増やす時は <figure class="slide"> を足すだけでOK) -->
+<section class="slider" aria-label="写真ギャラリー">
+    <div class="slides">
+        <figure class="slide"><img src="images/プゾシア.jpg" alt="プゾシア"></figure>
+        <figure class="slide"><img src="images/樹木.jpg" alt="白亜紀の樹木"></figure>
+        <figure class="slide"><img src="images/貝.jpg" alt="白亜紀の貝"></figure>
+    </div>
+    <div class="dots" role="tablist" aria-label="スライドの位置"></div>
+</section>
+
+<main>
+    <div class="container">
 
         <section class="articles">
             <h2>新着記事</h2>
@@ -104,6 +100,44 @@
     <p class="footer-title">気まぐれ白亜紀</p>
     <p>© 2026 気まぐれ白亜紀</p>
 </footer>
+
+
+<script>
+(function () {
+    var slider = document.querySelector('.slider');
+    var track = slider.querySelector('.slides');
+    var count = track.children.length;
+    var dotsBox = slider.querySelector('.dots');
+    var index = 0, timer = null;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 枚数ぶんの「・」を自動で作る
+    for (var i = 0; i < count; i++) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('role', 'tab');
+        b.setAttribute('aria-label', (i + 1) + '枚目 / 全' + count + '枚');
+        (function (n) { b.addEventListener('click', function () { go(n); restart(); }); })(i);
+        dotsBox.appendChild(b);
+    }
+
+    function go(n) {
+        index = (n + count) % count;
+        track.style.transform = 'translateX(' + (-index * 100) + '%)';
+        Array.prototype.forEach.call(dotsBox.children, function (d, k) {
+            d.classList.toggle('active', k === index);
+            d.setAttribute('aria-selected', k === index);
+        });
+    }
+    function start() { if (!reduce && count > 1) timer = setInterval(function () { go(index + 1); }, 5000); }
+    function stop() { clearInterval(timer); }
+    function restart() { stop(); start(); }
+
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
+    go(0); start();
+})();
+</script>
 
 </body>
 </html>
