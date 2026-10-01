@@ -3,14 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>気まぐれ白亜紀</title>
 
-    <meta name="description" content="白亜紀の生き物や化石、研究について気ままに紹介するサイトです。">
+    <meta name="description"
+        content="アンモナイトや白亜紀の生き物、化石、研究について気ままに紹介するサイトです。">
 
     <meta name="google-site-verification"
-        content="Ldopm_2A64YRhq-wxG6yr-6cmKxI-bX-UetABGQNLeU" />
+        content="Ldopm_2A64YRhq-wxG6yr-6cmKxI-bX-UetABGQNLeU">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,14 +20,16 @@
 
 <body>
 
-    <!-- ヘッダー -->
+    <!-- ====================
+         ヘッダー
+    ===================== -->
 
     <header>
 
         <div class="header-inner">
 
-            <a href="#" class="logo">
-                🐚 気まぐれ白亜紀
+            <a href="#" class="site-name">
+                気まぐれ白亜紀
             </a>
 
             <nav>
@@ -40,7 +44,27 @@
     </header>
 
 
-    <!-- メイン -->
+    <!-- ====================
+         検索
+    ===================== -->
+
+    <div class="search-area">
+
+        <input
+            type="text"
+            placeholder="記事を検索"
+        >
+
+        <button>
+            検索
+        </button>
+
+    </div>
+
+
+    <!-- ====================
+         メイン
+    ===================== -->
 
     <main>
 
@@ -49,200 +73,215 @@
 
         <section class="intro" id="about">
 
-            <div class="intro-text">
+            <h1>
+                古生物紹介サイトです。
+            </h1>
 
-                <span class="label">WELCOME!</span>
+            <p>
+                アンモナイトをはじめとした白亜紀の生き物から、
+                <br>
+                化石や研究についてまで、気の向くままに調べて記事にしています。
+                <br>
+                研究で考えたことや、気になったことも気ままに記録しています。
+            </p>
 
-                <h1>
-                    白亜紀の世界を<br>
-                    気ままにのぞいてみよう。
-                </h1>
-
-                <p>
-                    アンモナイトや古生物、化石、研究など。
-                    <br>
-                    気になったことを気ままに調べて、
-                    気ままに書いていくサイトです。
-                </p>
-
-                <a href="#articles" class="main-button">
-                    記事を見てみる →
-                </a>
-
-            </div>
-
-
-            <div class="intro-image">
-
-                <img src="images/プゾシア.jpg" alt="プゾシア">
-
-                <div class="image-caption">
-                    Cretaceous ammonite
-                </div>
-
-            </div>
+            <a href="#about-detail">
+                どんなサイト？を読む →
+            </a>
 
         </section>
 
 
-        <!-- カラフルな画像 -->
+        <!-- ====================
+             メイン画像
+        ===================== -->
 
-        <section class="photo-area">
+        <section class="main-images">
 
-            <div class="photo photo-1">
-                <img src="images/樹木.jpg" alt="白亜紀の樹木">
-            </div>
-
-            <div class="photo photo-2">
+            <div class="image-box image-yellow">
                 <img src="images/プゾシア.jpg" alt="プゾシア">
             </div>
 
-            <div class="photo photo-3">
+            <div class="image-box image-blue">
+                <img src="images/樹木.jpg" alt="白亜紀の樹木">
+            </div>
+
+            <div class="image-box image-pink">
                 <img src="images/貝.jpg" alt="白亜紀の貝">
             </div>
 
         </section>
 
 
-        <!-- 新着記事 -->
+        <!-- ====================
+             新着記事
+        ===================== -->
 
         <section class="articles" id="articles">
 
-            <div class="section-title">
-
-                <span>NEW ARTICLES</span>
-
-                <h2>新着記事</h2>
-
-            </div>
+            <h2>新着記事</h2>
 
 
-            <div class="article-list">
+            <article class="article">
+
+                <div class="article-image">
+                    <img src="images/プゾシア.jpg" alt="プゾシア">
+                </div>
+
+                <div class="article-text">
+
+                    <span class="article-category fossil">
+                        古生物
+                    </span>
+
+                    <h3>
+                        プゾシアについて
+                    </h3>
+
+                    <p>
+                        白亜紀を生きたアンモナイト、
+                        プゾシアについて調べてみました。
+                    </p>
+
+                    <small>
+                        2026年10月1日
+                    </small>
+
+                </div>
+
+            </article>
 
 
-                <article class="article-card">
+            <article class="article">
 
-                    <div class="article-image green">
-                        <img src="images/プゾシア.jpg" alt="プゾシア">
-                    </div>
+                <div class="article-image">
+                    <img src="images/樹木.jpg" alt="白亜紀の樹木">
+                </div>
 
-                    <div class="article-info">
+                <div class="article-text">
 
-                        <span class="category fossil">
-                            古生物
-                        </span>
+                    <span class="article-category plant">
+                        植物
+                    </span>
 
-                        <h3>プゾシアについて</h3>
+                    <h3>
+                        白亜紀の樹木
+                    </h3>
 
-                        <p>
-                            白亜紀を代表するアンモナイトの
-                            ひとつ、プゾシアについて調べてみる。
-                        </p>
+                    <p>
+                        白亜紀にはどんな植物が
+                        生えていたのでしょうか。
+                    </p>
 
-                        <div class="article-meta">
-                            2026.10.01
-                        </div>
+                    <small>
+                        2026年10月1日
+                    </small>
 
-                    </div>
+                </div>
 
-                </article>
-
-
-                <article class="article-card">
-
-                    <div class="article-image yellow">
-                        <img src="images/樹木.jpg" alt="白亜紀の樹木">
-                    </div>
-
-                    <div class="article-info">
-
-                        <span class="category plant">
-                            植物
-                        </span>
-
-                        <h3>白亜紀の樹木</h3>
-
-                        <p>
-                            白亜紀にはどんな植物が
-                            生えていたのだろう？
-                        </p>
-
-                        <div class="article-meta">
-                            2026.10.01
-                        </div>
-
-                    </div>
-
-                </article>
+            </article>
 
 
-                <article class="article-card">
+            <article class="article">
 
-                    <div class="article-image blue">
-                        <img src="images/貝.jpg" alt="白亜紀の貝">
-                    </div>
+                <div class="article-image">
+                    <img src="images/貝.jpg" alt="白亜紀の貝">
+                </div>
 
-                    <div class="article-info">
+                <div class="article-text">
 
-                        <span class="category shell">
-                            海の生き物
-                        </span>
+                    <span class="article-category shell">
+                        海の生き物
+                    </span>
 
-                        <h3>白亜紀の貝</h3>
+                    <h3>
+                        白亜紀の貝
+                    </h3>
 
-                        <p>
-                            白亜紀の海には、
-                            どんな生き物が暮らしていたのか。
-                        </p>
+                    <p>
+                        白亜紀の海にはどんな生き物が
+                        暮らしていたのでしょうか。
+                    </p>
 
-                        <div class="article-meta">
-                            2026.10.01
-                        </div>
+                    <small>
+                        2026年10月1日
+                    </small>
 
-                    </div>
+                </div>
 
-                </article>
-
-
-            </div>
+            </article>
 
         </section>
 
 
-        <!-- カテゴリ -->
+        <!-- ====================
+             カテゴリ
+        ===================== -->
 
-        <section class="categories">
+        <aside>
 
-            <div class="section-title">
+            <section>
 
-                <span>CATEGORY</span>
+                <h2>カテゴリ</h2>
 
-                <h2>カテゴリー</h2>
+                <ul>
+                    <li>
+                        <a href="#">日記 (0)</a>
+                    </li>
 
-            </div>
+                    <li>
+                        <a href="#">古生物 (2)</a>
+                    </li>
+
+                    <li>
+                        <a href="#">研究 (1)</a>
+                    </li>
+                </ul>
+
+            </section>
 
 
-            <div class="category-list">
+            <!-- タグ -->
 
-                <a href="#" class="category-box fossil-box">
-                    🐚
-                    <strong>古生物</strong>
-                    <small>アンモナイト・化石など</small>
-                </a>
+            <section>
 
-                <a href="#" class="category-box research-box">
-                    🔬
-                    <strong>研究</strong>
-                    <small>研究・観察・考察</small>
-                </a>
+                <h2>タグ</h2>
 
-                <a href="#" class="category-box diary-box">
-                    ✏️
-                    <strong>日記</strong>
-                    <small>日々の記録</small>
-                </a>
+                <div class="tags">
 
-            </div>
+                    <a href="#">アンモナイト</a>
+                    <a href="#">白亜紀</a>
+                    <a href="#">化石</a>
+                    <a href="#">植物</a>
+                    <a href="#">海</a>
+                    <a href="#">研究</a>
+
+                </div>
+
+            </section>
+
+        </aside>
+
+
+        <!-- ====================
+             サイトについて
+        ===================== -->
+
+        <section class="about-detail" id="about-detail">
+
+            <h2>
+                気まぐれ白亜紀について
+            </h2>
+
+            <p>
+                「気まぐれ白亜紀」は、
+                白亜紀の生き物や化石について気ままに紹介するサイトです。
+            </p>
+
+            <p>
+                アンモナイトなどの古生物について調べたり、
+                自分の研究で考えたことを記録したりしています。
+            </p>
 
         </section>
 
@@ -251,18 +290,10 @@
 
         <section class="notice" id="notice">
 
-            <div>
-
-                <span>NOTICE</span>
-
-                <h2>お知らせ</h2>
-
-            </div>
+            <h2>お知らせ</h2>
 
             <p>
                 「気まぐれ白亜紀」を公開しました！
-                <br>
-                これから少しずつ記事を増やしていきます。
             </p>
 
         </section>
@@ -271,23 +302,22 @@
     </main>
 
 
-    <!-- フッター -->
+    <!-- ====================
+         フッター
+    ===================== -->
 
     <footer>
 
-        <div class="footer-logo">
-            🐚 気まぐれ白亜紀
-        </div>
+        <a href="#" class="footer-name">
+            気まぐれ白亜紀
+        </a>
 
         <p>
-            白亜紀の世界を、気まぐれに。
+            © 2026 気まぐれ白亜紀
         </p>
 
-        <small>
-            © 2026 気まぐれ白亜紀
-        </small>
-
     </footer>
+
 
 </body>
 
