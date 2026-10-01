@@ -1,4 +1,6 @@
-/* 全体 */
+/* =========================
+   全体
+========================= */
 
 * {
     box-sizing: border-box;
@@ -10,325 +12,597 @@ html {
 
 body {
     margin: 0;
+
     font-family:
         "Hiragino Kaku Gothic ProN",
         "Yu Gothic",
         Meiryo,
         sans-serif;
 
-    background: #f3f0e8;
-    color: #30352f;
+    background: #fffaf0;
+    color: #333;
+
     line-height: 1.8;
 }
 
+img {
+    max-width: 100%;
+}
 
-/* ヘッダー */
+
+/* =========================
+   ヘッダー
+========================= */
 
 header {
-    background: #f3f0e8;
-    border-bottom: 1px solid #d7d2c6;
+    background: #ffffff;
+
+    border-bottom: 4px solid #222;
 }
 
 .header-inner {
     max-width: 1100px;
+
     margin: 0 auto;
-    padding: 24px 30px;
+
+    padding: 20px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    gap: 30px;
 }
 
-.site-title {
+.logo {
+    color: #222;
+
+    font-size: 25px;
+    font-weight: 900;
+
     text-decoration: none;
-    color: #30352f;
-
-    font-size: 26px;
-    font-weight: bold;
-    letter-spacing: 0.08em;
-}
-
-.site-title span {
-    font-weight: normal;
 }
 
 nav {
     display: flex;
-    gap: 28px;
+
+    gap: 8px;
 }
 
 nav a {
+    padding: 8px 14px;
+
+    color: #333;
+
     text-decoration: none;
-    color: #555b52;
+
     font-size: 14px;
+    font-weight: bold;
+
+    border-radius: 20px;
 }
 
 nav a:hover {
-    color: #8b5e3c;
+    background: #ffe04b;
 }
 
 
-/* メイン */
+/* =========================
+   サイト紹介
+========================= */
 
-main {
+.intro {
     max-width: 1100px;
+
     margin: 0 auto;
-}
 
-
-/* ヒーロー */
-
-.hero {
-    min-height: 520px;
-    padding: 70px 30px;
+    padding: 80px 20px;
 
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 60px;
 
     align-items: center;
 }
 
-.hero-label {
-    color: #8b5e3c;
+.intro-text {
+    padding: 20px;
+}
+
+.label {
+    display: inline-block;
+
+    padding: 5px 14px;
+
+    background: #ff6b4a;
+
+    color: white;
+
+    border-radius: 20px;
+
     font-size: 13px;
-    letter-spacing: 0.2em;
-    margin-bottom: 20px;
+    font-weight: bold;
 }
 
-.hero h1 {
-    margin: 0 0 25px;
+.intro h1 {
+    margin: 20px 0;
 
-    font-family: Georgia, serif;
-    font-size: 64px;
-    line-height: 1.2;
-    font-weight: normal;
+    font-size: 48px;
 
-    color: #30352f;
+    line-height: 1.35;
+
+    font-weight: 900;
+
+    color: #222;
 }
 
-.hero-text > p:last-child {
-    color: #666b63;
+.intro p {
+    color: #666;
+
+    font-size: 16px;
 }
 
-.hero-image {
+.main-button {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 12px 25px;
+
+    background: #222;
+
+    color: white;
+
+    border-radius: 30px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.main-button:hover {
+    background: #ff6b4a;
+}
+
+.intro-image {
     position: relative;
+
+    transform: rotate(2deg);
 }
 
-.hero-image img {
+.intro-image img {
     width: 100%;
+
     height: 400px;
 
     object-fit: cover;
 
-    display: block;
+    border: 10px solid white;
 
-    border-radius: 2px;
+    box-shadow: 8px 8px 0 #5ac8a8;
 }
 
+.image-caption {
+    position: absolute;
 
-/* 記事 */
+    right: 10px;
+    bottom: -20px;
 
-.articles {
-    padding: 80px 30px;
-}
+    padding: 8px 15px;
 
-.section-heading {
-    margin-bottom: 40px;
-}
+    background: #ffe04b;
 
-.section-heading p,
-.section-label {
-    margin: 0;
+    color: #222;
 
-    color: #8b5e3c;
     font-size: 12px;
-    letter-spacing: 0.2em;
-}
 
-.section-heading h2,
-.about h2 {
-    margin: 5px 0 0;
+    font-weight: bold;
 
-    font-family: Georgia, serif;
-    font-size: 38px;
-    font-weight: normal;
+    transform: rotate(-4deg);
 }
 
 
-/* 記事カード */
+/* =========================
+   写真エリア
+========================= */
 
-.article-grid {
+.photo-area {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 20px;
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+
+    grid-template-columns: 1fr 1.3fr 1fr;
+
+    gap: 20px;
+
+    align-items: center;
 }
 
-.card {
-    background: #fff;
-
+.photo {
     overflow: hidden;
 
-    border: 1px solid #e0ddd5;
+    border: 8px solid white;
 
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    box-shadow: 5px 5px 0 #222;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-}
-
-.card-image {
-    height: 220px;
-    overflow: hidden;
-}
-
-.card-image img {
+.photo img {
     width: 100%;
-    height: 100%;
+
+    height: 230px;
 
     object-fit: cover;
 
     display: block;
-
-    transition: transform 0.3s ease;
 }
 
-.card:hover img {
-    transform: scale(1.04);
+.photo-1 {
+    background: #5ac8a8;
+
+    transform: rotate(-3deg);
 }
 
-.card-content {
-    padding: 25px;
+.photo-2 {
+    background: #ffe04b;
+
+    transform: rotate(2deg);
+}
+
+.photo-3 {
+    background: #6aa9ff;
+
+    transform: rotate(-2deg);
+}
+
+
+/* =========================
+   共通見出し
+========================= */
+
+.section-title {
+    margin-bottom: 40px;
+}
+
+.section-title span {
+    color: #ff6b4a;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.15em;
+}
+
+.section-title h2 {
+    margin: 0;
+
+    font-size: 38px;
+
+    font-weight: 900;
+
+    color: #222;
+}
+
+
+/* =========================
+   新着記事
+========================= */
+
+.articles {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 100px 20px;
+}
+
+.article-list {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.article-card {
+    background: white;
+
+    border: 3px solid #222;
+
+    box-shadow: 7px 7px 0 #222;
+
+    transition: 0.2s;
+}
+
+.article-card:hover {
+    transform: translateY(-7px);
+}
+
+.article-image {
+    padding: 10px;
+}
+
+.article-image img {
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.green {
+    background: #5ac8a8;
+}
+
+.yellow {
+    background: #ffe04b;
+}
+
+.blue {
+    background: #6aa9ff;
+}
+
+.article-info {
+    padding: 22px;
 }
 
 .category {
-    margin: 0 0 8px;
+    display: inline-block;
 
-    color: #8b5e3c;
+    padding: 3px 10px;
+
+    border-radius: 15px;
 
     font-size: 12px;
-    letter-spacing: 0.1em;
+
+    font-weight: bold;
 }
 
-.card h3 {
-    margin: 0 0 12px;
-
-    font-family: Georgia, serif;
-    font-size: 25px;
-    font-weight: normal;
+.fossil {
+    background: #ffd0c5;
+    color: #c43f25;
 }
 
-.card p:not(.category) {
-    margin: 0 0 20px;
+.plant {
+    background: #c9f1d9;
+    color: #237b4b;
+}
+
+.shell {
+    background: #d4e5ff;
+    color: #3568a8;
+}
+
+.article-info h3 {
+    margin: 12px 0 10px;
+
+    font-size: 22px;
+
+    color: #222;
+}
+
+.article-info p {
+    margin: 0;
 
     color: #666;
+
     font-size: 14px;
 }
 
-.read-more {
-    color: #30352f;
+.article-meta {
+    margin-top: 20px;
+
+    color: #999;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   カテゴリー
+========================= */
+
+.categories {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 50px 20px 100px;
+}
+
+.category-list {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.category-box {
+    min-height: 160px;
+
+    padding: 25px;
+
+    color: #222;
 
     text-decoration: none;
 
+    border: 3px solid #222;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    transition: 0.2s;
+}
+
+.category-box:hover {
+    transform: translateY(-5px);
+}
+
+.category-box strong {
+    font-size: 24px;
+}
+
+.category-box small {
+    color: #555;
+}
+
+.fossil-box {
+    background: #ffcfb9;
+}
+
+.research-box {
+    background: #bfe9ff;
+}
+
+.diary-box {
+    background: #fff09a;
+}
+
+
+/* =========================
+   お知らせ
+========================= */
+
+.notice {
+    max-width: 1100px;
+
+    margin: 0 auto 100px;
+
+    padding: 35px;
+
+    background: #222;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+.notice span {
+    color: #ffe04b;
+
     font-size: 12px;
-    letter-spacing: 0.08em;
+
+    font-weight: bold;
 }
 
-.read-more:hover {
-    color: #8b5e3c;
+.notice h2 {
+    margin: 5px 0 0;
+
+    font-size: 28px;
 }
 
+.notice p {
+    margin: 0;
 
-/* ABOUT */
-
-.about {
-    margin-top: 30px;
-    padding: 80px 30px;
-
-    background: #e5e0d4;
-}
-
-.about-inner {
-    max-width: 700px;
-}
-
-.about h2 {
-    margin-bottom: 25px;
-}
-
-.about p:not(.section-label) {
-    color: #5f635d;
+    color: #ddd;
 }
 
 
-/* フッター */
+/* =========================
+   フッター
+========================= */
 
 footer {
     padding: 50px 20px;
 
-    text-align: center;
+    background: #5ac8a8;
 
-    background: #30352f;
-    color: white;
+    color: #222;
+
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 25px;
+
+    font-weight: 900;
 }
 
 footer p {
-    margin: 0 0 5px;
-
-    font-family: Georgia, serif;
-    font-size: 20px;
+    margin: 5px 0 15px;
 }
 
 footer small {
-    color: #c8cbc5;
+    font-size: 12px;
 }
 
 
-/* スマホ */
+/* =========================
+   スマホ
+========================= */
 
 @media (max-width: 700px) {
 
     .header-inner {
         display: block;
-        padding: 20px;
     }
 
     nav {
         margin-top: 15px;
-        gap: 20px;
+
+        flex-wrap: wrap;
     }
 
-    .hero {
+    .intro {
         grid-template-columns: 1fr;
 
         padding: 50px 20px;
 
-        gap: 30px;
+        gap: 40px;
     }
 
-    .hero h1 {
-        font-size: 48px;
+    .intro h1 {
+        font-size: 38px;
     }
 
-    .hero-image img {
+    .intro-image img {
         height: 300px;
     }
 
-    .articles {
-        padding: 60px 20px;
-    }
-
-    .article-grid {
+    .photo-area {
         grid-template-columns: 1fr;
     }
 
-    .about {
-        padding: 60px 20px;
+    .photo img {
+        height: 220px;
+    }
+
+    .article-list {
+        grid-template-columns: 1fr;
+    }
+
+    .category-list {
+        grid-template-columns: 1fr;
+    }
+
+    .notice {
+        margin: 0 20px 60px;
+
+        display: block;
+    }
+
+    .notice p {
+        margin-top: 20px;
     }
 
 }
