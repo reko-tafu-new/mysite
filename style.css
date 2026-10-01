@@ -1,242 +1,317 @@
-* {
-    box-sizing: border-box;
+/* =========================
+   基本設定
+========================= */
+:root {
+    --green-dark: #1f4d33;
+    --green: #2e7d4f;
+    --green-soft: #e3efe6;
+    --amber: #c98a1b;
+    --bg: #f1f4ef;
+    --ink: #23302a;
+    --muted: #66756c;
+    --line: #d8e0d8;
 }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
     margin: 0;
-    font-family: Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-    background: #f5f5f5;
-    color: #333;
+    font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.8;
 }
+
+a { color: inherit; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--amber);
+    outline-offset: 2px;
+}
+
+h1, h2 { line-height: 1.4; margin: 0; }
 
 
 /* =========================
-   ヘッダー
+   ヘッダー(緑)
 ========================= */
-
-header {
-    background: #4f7f52;
-    border-bottom: 1px solid #3f683f;
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--green-dark);
+    border-bottom: 4px solid var(--amber);
 }
 
 .header-inner {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 16px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
 }
 
-header h1 {
-    margin: 0;
+.site-title {
+    color: #fff;
     font-size: 24px;
-    color: white;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-decoration: none;
 }
 
-nav a {
-    margin-left: 20px;
+.site-nav a {
+    margin-left: 24px;
+    color: #dcebe0;
+    font-weight: 500;
     text-decoration: none;
-    color: white;
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color .2s, color .2s;
+}
+
+.site-nav a:hover {
+    color: #fff;
+    border-bottom-color: var(--amber);
 }
 
 
 /* =========================
    メイン
 ========================= */
-
-main {
+.container {
     max-width: 1100px;
     margin: 40px auto;
-    padding: 0 20px;
+    padding: 48px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
 }
 
-article {
-    background: white;
-    padding: 40px;
-}
+main { padding: 0 20px; }
 
 
 /* =========================
    検索
 ========================= */
-
 .search {
     display: flex;
-    margin-bottom: 40px;
+    gap: 10px;
+    margin-bottom: 48px;
 }
 
 .search input {
     flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
+    min-width: 0;
+    padding: 12px 16px;
+    font: inherit;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--bg);
 }
 
 .search button {
-    margin: 0 0 0 10px;
-    padding: 8px 20px;
+    padding: 12px 28px;
+    font: inherit;
+    font-weight: 700;
+    color: #fff;
+    background: var(--green);
     border: none;
-    background: #333;
-    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s;
 }
+
+.search button:hover { background: var(--green-dark); }
 
 
 /* =========================
    イントロ
 ========================= */
+.intro { margin-bottom: 48px; }
 
-.intro {
-    margin-bottom: 40px;
-}
-
-.intro h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
+.intro h1 {
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 900;
+    color: var(--green-dark);
+    margin-bottom: 16px;
 }
 
 .intro p {
-    line-height: 2;
+    margin: 0 0 16px;
+    max-width: 38em;
+    color: var(--muted);
 }
 
-.intro a {
-    color: #4f7f52;
+.more {
+    color: var(--green);
+    font-weight: 700;
+    text-underline-offset: 4px;
 }
 
 
 /* =========================
-   写真スライダー
+   自動スライド写真
 ========================= */
-
 .slider {
-    width: 100%;
     overflow: hidden;
-    margin: 40px 0;
+    margin: 0 -48px 56px;   /* 白い枠の端まで広げる */
 }
 
 .slider-track {
     display: flex;
     width: max-content;
-
-    animation: slide 18s linear infinite;
+    animation: slide 40s linear infinite;
 }
+
+.slider:hover .slider-track { animation-play-state: paused; }
 
 .slider-track img {
-    width: 240px;
-    height: 180px;
-
-    object-fit: cover;
-
+    flex-shrink: 0;
     display: block;
-
-    margin-right: 20px;
+    width: 320px;
+    height: 220px;
+    margin-right: 16px;     /* gapではなくmarginにすると継ぎ目がずれない */
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-
-/* 写真を左方向へ移動 */
-
+/* 全体の半分(=ちょうど1セット分)だけ左へ動かして最初に戻る */
 @keyframes slide {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
 
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-780px);
-    }
-
+@media (prefers-reduced-motion: reduce) {
+    .slider { overflow-x: auto; }
+    .slider-track { animation: none; }
 }
 
 
 /* =========================
    新着記事
 ========================= */
-
-.articles {
-    margin-top: 50px;
-}
-
 h2 {
-    margin: 10px 0 20px;
-    font-size: 28px;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+    padding-left: 14px;
+    border-left: 6px solid var(--green);
 }
 
-ul {
-    padding-left: 20px;
+.post-list,
+.pill-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-li {
-    margin-bottom: 12px;
+.post-list li { border-bottom: 1px solid var(--line); }
+.post-list li:first-child { border-top: 1px solid var(--line); }
+
+.post-list a {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 8px;
+    text-decoration: none;
+    transition: background .2s, padding-left .2s;
 }
 
-a {
-    color: inherit;
+.post-list a:hover {
+    background: var(--green-soft);
+    padding-left: 16px;
 }
+
+.cat {
+    flex-shrink: 0;
+    min-width: 4.5em;
+    padding: 2px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    background: var(--green);
+    border-radius: 999px;
+}
+
+.post-title { font-weight: 500; }
 
 
 /* =========================
    カテゴリ・タグ
 ========================= */
-
-.categories,
-.tags {
-    margin-top: 50px;
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 56px;
 }
 
-.tags a {
+.pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pill-list a {
     display: inline-block;
-    margin-right: 15px;
-    margin-bottom: 10px;
+    padding: 4px 16px;
+    text-decoration: none;
+    color: var(--green-dark);
+    background: var(--green-soft);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    transition: background .2s, color .2s;
+}
+
+.pill-list a:hover {
+    background: var(--green);
+    color: #fff;
 }
 
 
 /* =========================
-   フッター
+   フッター(緑)
 ========================= */
-
-footer {
+.site-footer {
     margin-top: 60px;
-    padding: 30px;
+    padding: 36px 20px;
     text-align: center;
-
-    background: #4f7f52;
-    color: white;
+    color: #dcebe0;
+    background: var(--green-dark);
+    border-top: 4px solid var(--amber);
 }
 
-footer p {
-    margin: 8px;
+.site-footer p { margin: 6px 0; }
+
+.footer-title {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
 }
 
 
 /* =========================
    スマホ
 ========================= */
-
 @media (max-width: 700px) {
+    .header-inner { flex-direction: column; align-items: flex-start; }
+    .site-nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+    .site-nav a { margin-left: 0; }
 
-    .header-inner {
-        display: block;
-    }
+    main { padding: 0 12px; }
+    .container { padding: 24px; margin: 20px auto; }
+    .slider { margin: 0 -24px 40px; }
+    .slider-track img { width: 220px; height: 160px; }
 
-    nav {
-        margin-top: 15px;
-    }
-
-    nav a {
-        margin-left: 0;
-        margin-right: 15px;
-    }
-
-    article {
-        padding: 25px;
-    }
-
-    .intro h2 {
-        font-size: 26px;
-    }
-
-    .slider-track img {
-        width: 200px;
-        height: 150px;
-    }
-
+    .side-by-side { grid-template-columns: 1fr; gap: 40px; }
+    .post-list a { flex-wrap: wrap; gap: 6px 12px; }
 }
