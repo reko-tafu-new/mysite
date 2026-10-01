@@ -19,7 +19,7 @@ html { scroll-behavior: smooth; }
 body {
     margin: 0;
     font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-    background: var(--bg);
+    background: #fff;
     color: var(--ink);
     line-height: 1.8;
 }
@@ -85,15 +85,12 @@ h1, h2 { line-height: 1.4; margin: 0; }
    メイン
 ========================= */
 .container {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 48px;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 12px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 0;
 }
 
-main { padding: 0 20px; }
+main { padding: 0 32px; }
 
 
 /* =========================
@@ -156,40 +153,57 @@ main { padding: 0 20px; }
 
 
 /* =========================
-   自動スライド写真
+   自動スライド写真(画面いっぱい)
 ========================= */
 .slider {
+    width: 100%;
     overflow: hidden;
-    margin: 0 -48px 56px;   /* 白い枠の端まで広げる */
+    background: var(--green-soft);
 }
 
-.slider-track {
+.slides {
     display: flex;
-    width: max-content;
-    animation: slide 40s linear infinite;
+    transition: transform .8s ease;
 }
 
-.slider:hover .slider-track { animation-play-state: paused; }
+.slide {
+    flex: 0 0 100%;
+    margin: 0;
+}
 
-.slider-track img {
-    flex-shrink: 0;
+.slide img {
     display: block;
-    width: 320px;
-    height: 220px;
-    margin-right: 16px;     /* gapではなくmarginにすると継ぎ目がずれない */
+    width: 100%;
+    height: clamp(220px, 46vw, 560px);
     object-fit: cover;
-    border-radius: 10px;
 }
 
-/* 全体の半分(=ちょうど1セット分)だけ左へ動かして最初に戻る */
-@keyframes slide {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+/* 写真の下の「・・・」(今の写真だけ濃く大きい) */
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    padding: 14px 0;
+}
+
+.dots button {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #a9bfae;
+    cursor: pointer;
+    transition: background .3s, transform .3s;
+}
+
+.dots button.active {
+    background: var(--green-dark);
+    transform: scale(1.4);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .slider { overflow-x: auto; }
-    .slider-track { animation: none; }
+    .slides { transition: none; }
 }
 
 
@@ -307,10 +321,8 @@ h2 {
     .site-nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
     .site-nav a { margin-left: 0; }
 
-    main { padding: 0 12px; }
-    .container { padding: 24px; margin: 20px auto; }
-    .slider { margin: 0 -24px 40px; }
-    .slider-track img { width: 220px; height: 160px; }
+    main { padding: 0 16px; }
+    .container { padding: 24px 0; }
 
     .side-by-side { grid-template-columns: 1fr; gap: 40px; }
     .post-list a { flex-wrap: wrap; gap: 6px 12px; }
