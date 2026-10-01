@@ -3,151 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>気まぐれ白亜紀</title>
-
+    <meta name="description" content="白亜紀に生息していた生き物や化石について、気まぐれに紹介するサイトです。">
     <meta name="google-site-verification" content="Ldopm_2A64YRhq-wxG6yr-6cmKxI-bX-UetABGQNLeU" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+<header class="site-header">
     <div class="header-inner">
-
-        <h1>気まぐれ白亜紀</h1>
-
-        <nav>
+        <a class="site-title" href="#">気まぐれ白亜紀</a>
+        <nav class="site-nav" aria-label="メインメニュー">
             <a href="#">トップページ</a>
             <a href="#">どんなサイト？</a>
             <a href="#">記事一覧</a>
             <a href="#">お知らせ</a>
         </nav>
-
     </div>
 </header>
 
-
 <main>
+    <div class="container">
 
-    <article>
-
-        <div class="search">
-            <input type="text" placeholder="検索">
-            <button>検索</button>
-        </div>
-
+        <form class="search" role="search" onsubmit="return false;">
+            <input type="search" placeholder="記事を検索" aria-label="記事を検索">
+            <button type="submit">検索</button>
+        </form>
 
         <section class="intro">
-
-            <h2>白亜紀の生き物紹介サイトです。</h2>
-
-            <p>
-                白亜紀に生息していた生き物や、
-                化石について気まぐれに紹介していくサイトです。
-            </p>
-
-            <a href="#">どんなサイト？を読む →</a>
-
+            <h1>白亜紀の生き物紹介サイトです。</h1>
+            <p>白亜紀に生息していた生き物や、化石について気まぐれに紹介していくサイトです。</p>
+            <a class="more" href="#">どんなサイト？を読む →</a>
         </section>
 
-
-        <!-- 写真スライダー -->
-        <section class="slider">
-
+        <!-- 自動スライド写真 -->
+        <section class="slider" aria-label="写真ギャラリー">
             <div class="slider-track">
-
+                <!-- 1セット目 -->
                 <img src="images/プゾシア.jpg" alt="プゾシア">
                 <img src="images/樹木.jpg" alt="白亜紀の樹木">
                 <img src="images/貝.jpg" alt="白亜紀の貝">
-
-                <!-- 同じ3枚をもう一度並べる -->
-                <img src="images/プゾシア.jpg" alt="プゾシア">
-                <img src="images/樹木.jpg" alt="白亜紀の樹木">
-                <img src="images/貝.jpg" alt="白亜紀の貝">
-
+                <img src="images/プゾシア.jpg" alt="" aria-hidden="true">
+                <img src="images/樹木.jpg" alt="" aria-hidden="true">
+                <img src="images/貝.jpg" alt="" aria-hidden="true">
+                <!-- 2セット目(ループ用の複製。1セット目と同じ並びにする) -->
+                <img src="images/プゾシア.jpg" alt="" aria-hidden="true">
+                <img src="images/樹木.jpg" alt="" aria-hidden="true">
+                <img src="images/貝.jpg" alt="" aria-hidden="true">
+                <img src="images/プゾシア.jpg" alt="" aria-hidden="true">
+                <img src="images/樹木.jpg" alt="" aria-hidden="true">
+                <img src="images/貝.jpg" alt="" aria-hidden="true">
             </div>
-
         </section>
-
 
         <section class="articles">
-
             <h2>新着記事</h2>
-
-            <ul>
-                <li>
-                    <a href="#">白亜紀のアンモナイトについて</a>
-                </li>
-
-                <li>
-                    <a href="#">プゾシアを観察してみた</a>
-                </li>
-
-                <li>
-                    <a href="#">白亜紀の海にいた生き物</a>
-                </li>
-
-                <li>
-                    <a href="#">化石を観察する</a>
-                </li>
-
-                <li>
-                    <a href="#">白亜紀の植物</a>
-                </li>
-
-                <li>
-                    <a href="#">アンモナイトの成長</a>
-                </li>
-
-                <li>
-                    <a href="#">化石研究の日記</a>
-                </li>
+            <ul class="post-list">
+                <li><a href="#"><span class="cat">研究</span><span class="post-title">白亜紀のアンモナイトについて</span></a></li>
+                <li><a href="#"><span class="cat">化石</span><span class="post-title">プゾシアを観察してみた</span></a></li>
+                <li><a href="#"><span class="cat">白亜紀</span><span class="post-title">白亜紀の海にいた生き物</span></a></li>
+                <li><a href="#"><span class="cat">化石</span><span class="post-title">化石を観察する</span></a></li>
+                <li><a href="#"><span class="cat">白亜紀</span><span class="post-title">白亜紀の植物</span></a></li>
+                <li><a href="#"><span class="cat">研究</span><span class="post-title">アンモナイトの成長</span></a></li>
+                <li><a href="#"><span class="cat">日記</span><span class="post-title">化石研究の日記</span></a></li>
             </ul>
-
         </section>
 
+        <div class="side-by-side">
+            <section class="categories">
+                <h2>カテゴリ</h2>
+                <ul class="pill-list">
+                    <li><a href="#">アンモナイト</a></li>
+                    <li><a href="#">化石</a></li>
+                    <li><a href="#">白亜紀</a></li>
+                    <li><a href="#">研究</a></li>
+                    <li><a href="#">日記</a></li>
+                </ul>
+            </section>
 
-        <section class="categories">
+            <section class="tags">
+                <h2>タグ</h2>
+                <ul class="pill-list">
+                    <li><a href="#">アンモナイト</a></li>
+                    <li><a href="#">化石</a></li>
+                    <li><a href="#">白亜紀</a></li>
+                    <li><a href="#">古生物</a></li>
+                    <li><a href="#">研究</a></li>
+                </ul>
+            </section>
+        </div>
 
-            <h2>カテゴリ</h2>
-
-            <ul>
-                <li><a href="#">アンモナイト</a></li>
-                <li><a href="#">化石</a></li>
-                <li><a href="#">白亜紀</a></li>
-                <li><a href="#">研究</a></li>
-                <li><a href="#">日記</a></li>
-            </ul>
-
-        </section>
-
-
-        <section class="tags">
-
-            <h2>タグ</h2>
-
-            <p>
-                <a href="#">アンモナイト</a>
-                <a href="#">化石</a>
-                <a href="#">白亜紀</a>
-                <a href="#">古生物</a>
-                <a href="#">研究</a>
-            </p>
-
-        </section>
-
-    </article>
-
+    </div>
 </main>
 
-
-<footer>
-
-    <p>気まぐれ白亜紀</p>
+<footer class="site-footer">
+    <p class="footer-title">気まぐれ白亜紀</p>
     <p>© 2026 気まぐれ白亜紀</p>
-
 </footer>
 
 </body>
