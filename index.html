@@ -21,24 +21,13 @@
         <nav class="site-nav" aria-label="メインメニュー">
             <a href="index.html">トップページ</a>
             <a href="#articles">記事一覧</a>
-            <a href="#footer">お知らせ</a>
+            <a href="news.html">お知らせ</a>
         </nav>
     </div>
 </header>
 
 <main>
     <div class="container">
-
-        <!-- 記事検索フォーム -->
-        <form class="search" id="searchForm" role="search">
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="記事名やカテゴリで検索"
-                aria-label="記事名やカテゴリで検索"
-            >
-            <button type="submit">検索</button>
-        </form>
 
         <section class="intro">
             <h1>白亜紀の生き物紹介サイトです。</h1>
@@ -67,10 +56,8 @@
 <main>
     <div class="container">
 
-        <!-- 記事一覧 -->
         <section class="articles" id="articles">
             <h2>きまぐれ記事</h2>
-
             <ul class="post-list">
 
                 <li>
@@ -140,12 +127,6 @@
                 </li>
 
             </ul>
-
-            <!-- 検索結果が0件のときに表示 -->
-            <p id="searchMessage" role="status" hidden>
-                該当する記事はありません。
-            </p>
-
         </section>
 
     </div>
@@ -157,9 +138,6 @@
 </footer>
 
 <script>
-/* =========================
-   自動スライド写真
-========================= */
 (function () {
     var slider = document.querySelector('.slider');
 
@@ -231,66 +209,6 @@
 
     go(0);
     start();
-})();
-
-
-/* =========================
-   記事検索
-========================= */
-(function () {
-    var form = document.getElementById('searchForm');
-    var input = document.getElementById('searchInput');
-    var list = document.querySelector('.post-list');
-    var message = document.getElementById('searchMessage');
-
-    if (!form || !input || !list || !message) return;
-
-    // 記事一覧を取得
-    var articles = Array.from(
-        list.querySelectorAll('li')
-    );
-
-    function searchArticles() {
-        var query = input.value.trim().toLowerCase();
-        var visibleCount = 0;
-
-        articles.forEach(function (article) {
-            var title = article.querySelector('.post-title');
-            var category = article.querySelector('.cat');
-
-            var titleText = title
-                ? title.textContent.toLowerCase()
-                : '';
-
-            var categoryText = category
-                ? category.textContent.toLowerCase()
-                : '';
-
-            // タイトルまたはカテゴリの部分一致で検索
-            var matched =
-                query === '' ||
-                titleText.includes(query) ||
-                categoryText.includes(query);
-
-            article.hidden = !matched;
-
-            if (matched) {
-                visibleCount++;
-            }
-        });
-
-        // 該当する記事がなければメッセージを表示
-        message.hidden = visibleCount !== 0;
-    }
-
-    // 入力するたびに検索
-    input.addEventListener('input', searchArticles);
-
-    // 検索ボタン・Enterキーでも検索
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        searchArticles();
-    });
 })();
 </script>
 
