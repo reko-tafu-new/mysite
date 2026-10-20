@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -29,6 +28,12 @@
 <main>
     <div class="container">
 
+        <!-- 検索バー -->
+        <form class="search" role="search">
+            <input type="search" id="search" placeholder="記事を検索" aria-label="記事を検索">
+            <button type="submit">検索</button>
+        </form>
+
         <section class="intro">
             <h1>白亜紀の生き物紹介サイトです。</h1>
             <p>白亜紀に生息していた生き物や、化石について気まぐれに紹介していくサイトです。</p>
@@ -58,6 +63,7 @@
 
         <section class="articles" id="articles">
             <h2>きまぐれ記事</h2>
+            <p id="no-result" hidden>該当する記事が見つかりませんでした。</p>
             <ul class="post-list">
 
                 <li>
@@ -137,10 +143,13 @@
     <p>© 2026 気まぐれ白亜紀</p>
 </footer>
 
+
+<!-- =========================
+     写真スライダー(自動スライド + スワイプ)
+========================= -->
 <script>
 (function () {
     var slider = document.querySelector('.slider');
-
     if (!slider) return;
 
     var track = slider.querySelector('.slides');
@@ -157,10 +166,7 @@
         var b = document.createElement('button');
         b.type = 'button';
         b.setAttribute('role', 'tab');
-        b.setAttribute(
-            'aria-label',
-            (i + 1) + '枚目 / 全' + count + '枚'
-        );
+        b.setAttribute('aria-label', (i + 1) + '枚目 / 全' + count + '枚');
 
         (function (n, button) {
             button.addEventListener('click', function () {
@@ -174,20 +180,16 @@
 
     function go(n) {
         index = (n + count) % count;
+        track.style.transform = 'translateX(' + (-index * 100) + '%)';
 
-        track.style.transform =
-            'translateX(' + (-index * 100) + '%)';
-
-        Array.prototype.forEach.call(
-            dotsBox.children,
-            function (d, k) {
-                d.classList.toggle('active', k === index);
-                d.setAttribute('aria-selected', k === index);
-            }
-        );
+        Array.prototype.forEach.call(dotsBox.children, function (d, k) {
+            d.classList.toggle('active', k === index);
+            d.setAttribute('aria-selected', k === index);
+        });
     }
 
     function start() {
+        stop(); // タイマーが二重にならないようにする
         if (!reduce && count > 1) {
             timer = setInterval(function () {
                 go(index + 1);
@@ -207,8 +209,132 @@
     slider.addEventListener('mouseenter', stop);
     slider.addEventListener('mouseleave', start);
 
+    // ---- スワイプ操作(指・マウス両対応) ----
+    var startX = 0;
+    var dx = 0;
+    var dragging = false;
+
+    slider.addEventListener('pointerdown', function (e) {
+        // 「・・・」ボタンのクリックは邪魔しない
+        if (e.target.closest('.dots')) return;
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+        dragging = true;
+        startX = e.clientX;
+        dx = 0;
+        track.style.transition = 'none'; // 指に追従する間はアニメーション停止
+        stop();
+        slider.setPointerCapture(e.pointerId);
+    });
+
+    slider.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        dx = e.clientX - startX;
+        track.style.transform =
+            'translateX(calc(' + (-index * 100) + '% + ' + dx + 'px))';
+    });
+
+    function endDrag(e) {
+        if (!dragging) return;
+        dragging = false;
+        track.style.transition = ''; // CSSのアニメーションに戻す
+
+        if (Math.abs(dx) > slider.offsetWidth * 0.2) {
+            go(index + (dx < 0 ? 1 : -1)); // 画面幅の2割以上動かしたら切り替え
+        } else {
+            go(index); // 足りなければ元の位置に戻す
+        }
+
+        if (e.pointerType !== 'mouse') start();
+    }
+
+    slider.addEventListener('pointerup', endDrag);
+    slider.addEventListener('pointercancel', endDrag);
+
     go(0);
     start();
+})();
+</script>
+
+
+<!-- =========================
+     検索(記事一覧の絞り込み)
+========================= -->
+<script>
+(function () {
+    var form = document.querySelector('.search');
+    var input = document.getElementById('search');
+    var items = document.querySelectorAll('.post-list li');
+    var msg = document.getElementById('no-result');
+
+    if (!form || !input) return;
+
+    function filter() {
+        var q = input.value.trim().toLowerCase();
+        var shown = 0;
+
+        items.forEach(function (li) {
+            var hit = li.textContent.toLowerCase().indexOf(q) !== -1;
+            li.hidden = !hit;
+            if (hit) shown++;
+        });
+
+        msg.hidden = shown > 0;
+    }
+
+    input.addEventListener('input', filter);
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        filter();
+        document.getElementById('articles').scrollIntoView();
+    });
+})();
+</script>
+
+
+<!-- =========================
+     ヘッダーの自動表示/非表示
+     (下にスクロールで隠れる / 上にスクロールで出る)
+========================= -->
+<script>
+(function () {
+    var header = document.querySelector('.site-header');
+    if (!header) return;
+
+    var lastY = window.pageYOffset;
+    var ticking = false;
+
+    function update() {
+        var y = window.pageYOffset;
+        var diff = y - lastY;
+
+        if (y <= 10) {
+            // 一番上では常に表示
+            header.classList.remove('is-hidden');
+        } else if (diff > 6 && y > header.offsetHeight) {
+            // 下にスクロール → 隠す
+            header.classList.add('is-hidden');
+        } else if (diff < -6) {
+            // 上にスクロール → 表示
+            header.classList.remove('is-hidden');
+        }
+
+        if (Math.abs(diff) > 6 || y <= 10) lastY = y;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            window.requestAnimationFrame(update);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // キーボード操作でヘッダーにフォーカスした時は表示する
+    header.addEventListener('focusin', function () {
+        header.classList.remove('is-hidden');
+    });
 })();
 </script>
 
