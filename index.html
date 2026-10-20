@@ -29,8 +29,14 @@
 <main>
     <div class="container">
 
-        <form class="search" role="search" onsubmit="return false;">
-            <input type="search" placeholder="記事を検索" aria-label="記事を検索">
+        <!-- 記事検索フォーム -->
+        <form class="search" id="searchForm" role="search">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="記事名やカテゴリで検索"
+                aria-label="記事名やカテゴリで検索"
+            >
             <button type="submit">検索</button>
         </form>
 
@@ -45,9 +51,15 @@
 <!-- 自動スライド写真 -->
 <section class="slider" aria-label="写真ギャラリー">
     <div class="slides">
-        <figure class="slide"><img src="images/プゾシア.jpg" alt="プゾシア"></figure>
-        <figure class="slide"><img src="images/樹木.jpg" alt="白亜紀の樹木"></figure>
-        <figure class="slide"><img src="images/貝.jpg" alt="白亜紀の貝"></figure>
+        <figure class="slide">
+            <img src="images/プゾシア.jpg" alt="プゾシア">
+        </figure>
+        <figure class="slide">
+            <img src="images/樹木.jpg" alt="白亜紀の樹木">
+        </figure>
+        <figure class="slide">
+            <img src="images/貝.jpg" alt="白亜紀の貝">
+        </figure>
     </div>
     <div class="dots" role="tablist" aria-label="スライドの位置"></div>
 </section>
@@ -55,8 +67,10 @@
 <main>
     <div class="container">
 
+        <!-- 記事一覧 -->
         <section class="articles" id="articles">
             <h2>きまぐれ記事</h2>
+
             <ul class="post-list">
 
                 <li>
@@ -67,23 +81,71 @@
                     </a>
                 </li>
 
-                <li><a href="spi.html"><span class="cat">日記</span><span class="post-title">やっと！SPIの本が終わった！</span><time class="post-date" datetime="2026-10-02">2026/10/02</time></a></li>
+                <li>
+                    <a href="spi.html">
+                        <span class="cat">日記</span>
+                        <span class="post-title">やっと！SPIの本が終わった！</span>
+                        <time class="post-date" datetime="2026-10-02">2026/10/02</time>
+                    </a>
+                </li>
 
-                <li><a href="ammonite.html"><span class="cat">解説</span><span class="post-title">白亜紀のアンモナイトについて</span><time class="post-date" datetime="2026-09-28">2026/09/28</time></a></li>
+                <li>
+                    <a href="ammonite.html">
+                        <span class="cat">解説</span>
+                        <span class="post-title">白亜紀のアンモナイトについて</span>
+                        <time class="post-date" datetime="2026-09-28">2026/09/28</time>
+                    </a>
+                </li>
 
-                <li><a href="#"><span class="cat">解説</span><span class="post-title">プゾシアを観察してみた</span></a></li>
+                <li>
+                    <a href="#">
+                        <span class="cat">解説</span>
+                        <span class="post-title">プゾシアを観察してみた</span>
+                    </a>
+                </li>
 
-                <li><a href="#"><span class="cat">日記</span><span class="post-title">白亜紀の海にいた生き物</span></a></li>
+                <li>
+                    <a href="#">
+                        <span class="cat">日記</span>
+                        <span class="post-title">白亜紀の海にいた生き物</span>
+                    </a>
+                </li>
 
-                <li><a href="#"><span class="cat">日記</span><span class="post-title">化石を観察する</span></a></li>
+                <li>
+                    <a href="#">
+                        <span class="cat">日記</span>
+                        <span class="post-title">化石を観察する</span>
+                    </a>
+                </li>
 
-                <li><a href="#"><span class="cat">日記</span><span class="post-title">白亜紀の植物</span></a></li>
+                <li>
+                    <a href="#">
+                        <span class="cat">日記</span>
+                        <span class="post-title">白亜紀の植物</span>
+                    </a>
+                </li>
 
-                <li><a href="#"><span class="cat">日記</span><span class="post-title">アンモナイトの成長</span></a></li>
+                <li>
+                    <a href="#">
+                        <span class="cat">日記</span>
+                        <span class="post-title">アンモナイトの成長</span>
+                    </a>
+                </li>
 
-                <li><a href="#"><span class="cat">日記</span><span class="post-title">化石研究の日記</span></a></li>
+                <li>
+                    <a href="#">
+                        <span class="cat">日記</span>
+                        <span class="post-title">化石研究の日記</span>
+                    </a>
+                </li>
 
             </ul>
+
+            <!-- 検索結果が0件のときに表示 -->
+            <p id="searchMessage" role="status" hidden>
+                該当する記事はありません。
+            </p>
+
         </section>
 
     </div>
@@ -95,36 +157,56 @@
 </footer>
 
 <script>
+/* =========================
+   自動スライド写真
+========================= */
 (function () {
     var slider = document.querySelector('.slider');
+
+    if (!slider) return;
+
     var track = slider.querySelector('.slides');
     var count = track.children.length;
     var dotsBox = slider.querySelector('.dots');
-    var index = 0, timer = null;
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var index = 0;
+    var timer = null;
+    var reduce = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    ).matches;
 
-    // 枚数ぶんの「・」を自動で作る
+    // 写真の枚数ぶんのボタンを作成
     for (var i = 0; i < count; i++) {
         var b = document.createElement('button');
         b.type = 'button';
         b.setAttribute('role', 'tab');
-        b.setAttribute('aria-label', (i + 1) + '枚目 / 全' + count + '枚');
-        (function (n) {
-            b.addEventListener('click', function () {
+        b.setAttribute(
+            'aria-label',
+            (i + 1) + '枚目 / 全' + count + '枚'
+        );
+
+        (function (n, button) {
+            button.addEventListener('click', function () {
                 go(n);
                 restart();
             });
-        })(i);
+        })(i, b);
+
         dotsBox.appendChild(b);
     }
 
     function go(n) {
         index = (n + count) % count;
-        track.style.transform = 'translateX(' + (-index * 100) + '%)';
-        Array.prototype.forEach.call(dotsBox.children, function (d, k) {
-            d.classList.toggle('active', k === index);
-            d.setAttribute('aria-selected', k === index);
-        });
+
+        track.style.transform =
+            'translateX(' + (-index * 100) + '%)';
+
+        Array.prototype.forEach.call(
+            dotsBox.children,
+            function (d, k) {
+                d.classList.toggle('active', k === index);
+                d.setAttribute('aria-selected', k === index);
+            }
+        );
     }
 
     function start() {
@@ -149,6 +231,66 @@
 
     go(0);
     start();
+})();
+
+
+/* =========================
+   記事検索
+========================= */
+(function () {
+    var form = document.getElementById('searchForm');
+    var input = document.getElementById('searchInput');
+    var list = document.querySelector('.post-list');
+    var message = document.getElementById('searchMessage');
+
+    if (!form || !input || !list || !message) return;
+
+    // 記事一覧を取得
+    var articles = Array.from(
+        list.querySelectorAll('li')
+    );
+
+    function searchArticles() {
+        var query = input.value.trim().toLowerCase();
+        var visibleCount = 0;
+
+        articles.forEach(function (article) {
+            var title = article.querySelector('.post-title');
+            var category = article.querySelector('.cat');
+
+            var titleText = title
+                ? title.textContent.toLowerCase()
+                : '';
+
+            var categoryText = category
+                ? category.textContent.toLowerCase()
+                : '';
+
+            // タイトルまたはカテゴリの部分一致で検索
+            var matched =
+                query === '' ||
+                titleText.includes(query) ||
+                categoryText.includes(query);
+
+            article.hidden = !matched;
+
+            if (matched) {
+                visibleCount++;
+            }
+        });
+
+        // 該当する記事がなければメッセージを表示
+        message.hidden = visibleCount !== 0;
+    }
+
+    // 入力するたびに検索
+    input.addEventListener('input', searchArticles);
+
+    // 検索ボタン・Enterキーでも検索
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        searchArticles();
+    });
 })();
 </script>
 
