@@ -45,6 +45,12 @@ h1, h2 { line-height: 1.4; margin: 0; }
     z-index: 10;
     background: var(--green-dark);
     border-bottom: 4px solid var(--amber);
+    transition: transform .3s ease; /* 追加:隠れる/出るアニメーション */
+}
+
+/* 追加:下スクロールで隠れた状態 */
+.site-header.is-hidden {
+    transform: translateY(-100%);
 }
 
 .header-inner {
@@ -159,6 +165,7 @@ main { padding: 0 32px; }
     width: 100%;
     overflow: hidden;
     background: var(--green-soft);
+    touch-action: pan-y; /* 追加:縦スクロールは通常どおり、横だけスワイプ用に使う */
 }
 
 .slides {
@@ -176,6 +183,8 @@ main { padding: 0 32px; }
     width: 100%;
     height: clamp(220px, 46vw, 560px);
     object-fit: cover;
+    -webkit-user-drag: none; /* 追加:画像がドラッグされないように */
+    user-select: none;
 }
 
 /* 写真の下の「・・・」(今の写真だけ濃く大きい) */
@@ -204,6 +213,7 @@ main { padding: 0 32px; }
 
 @media (prefers-reduced-motion: reduce) {
     .slides { transition: none; }
+    .site-header { transition: none; }
 }
 
 
@@ -219,6 +229,13 @@ h2 {
     border-left: 6px solid var(--green);
 }
 
+.articles { scroll-margin-top: 20px; } /* 追加:検索後のスクロール位置 */
+
+#no-result {
+    margin: 0 0 16px;
+    color: var(--muted);
+}
+
 .post-list,
 .pill-list {
     list-style: none;
@@ -228,6 +245,11 @@ h2 {
 
 .post-list li { border-bottom: 1px solid var(--line); }
 .post-list li:first-child { border-top: 1px solid var(--line); }
+
+.post-list li[hidden] { display: none; } /* 追加:検索で隠れた記事を確実に消す */
+
+/* 追加:先頭の記事が隠れても上の線が残るように */
+.post-list li:not([hidden]) ~ li:not([hidden]) { border-top: none; }
 
 .post-list a {
     display: flex;
